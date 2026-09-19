@@ -29,7 +29,7 @@ review filenames, documentation, binary assets, and author metadata too.
 
 ## Installed desktop verification
 
-On Apple Silicon macOS:
+On Apple Silicon running macOS 15 or newer (required by the pinned Essentia wheel):
 
 ```sh
 ./scripts/bootstrap.sh

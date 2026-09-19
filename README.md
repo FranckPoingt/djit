@@ -4,7 +4,7 @@ A local-first app for turning a messy music library into a collection worth DJin
 Import folders, listen and triage tracks, analyze BPM and key, build compatible
 playlists, and copy a chosen playlist to a folder or USB drive.
 
-**Alpha software.** macOS on Apple Silicon is the supported desktop target.
+**Alpha software.** macOS 15 or newer on Apple Silicon is the supported desktop target.
 Windows, Linux, and Intel Mac packages have not been validated. Engine DJ database
 export is not implemented; folder extraction produces audio copies, an M3U8
 playlist, and a JSON manifest.
