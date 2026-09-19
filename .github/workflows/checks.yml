@@ -9,7 +9,7 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v4
       - run: mise exec gitleaks@8.30.1 -- gitleaks dir . --redact --no-banner
       - run: ./scripts/bootstrap.sh
       - run: ./scripts/mise-exec.sh pnpm run lint
