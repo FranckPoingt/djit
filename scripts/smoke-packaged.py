@@ -61,8 +61,10 @@ with tempfile.TemporaryDirectory(prefix="djit-smoke-") as folder:
                     time.sleep(0.5)
             else:
                 raise TimeoutError("Packaged backend never became healthy")
-            with urllib.request.urlopen(origin + "/api/v1/events/analysis", timeout=10) as events:
+            # GZipMiddleware defers headers until the first SSE heartbeat (15s).
+            with urllib.request.urlopen(origin + "/api/v1/events/analysis", timeout=25) as events:
                 assert events.headers.get_content_type() == "text/event-stream"
+                assert events.readline().startswith(b": ping")
             request("/library/import?" + urllib.parse.urlencode({"folder_path": str(source)}), method="POST")
             for attempt in range(100):
                 status = request("/library/status")
