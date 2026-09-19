@@ -61,6 +61,10 @@ with tempfile.TemporaryDirectory(prefix="djit-smoke-") as folder:
                     time.sleep(0.5)
             else:
                 raise TimeoutError("Packaged backend never became healthy")
+            # GZipMiddleware defers headers until the first SSE heartbeat (15s).
+            with urllib.request.urlopen(origin + "/api/v1/events/analysis", timeout=25) as events:
+                assert events.headers.get_content_type() == "text/event-stream"
+                assert events.readline().startswith(b": ping")
             request("/library/import?" + urllib.parse.urlencode({"folder_path": str(source)}), method="POST")
             for attempt in range(100):
                 status = request("/library/status")
@@ -83,7 +87,7 @@ with tempfile.TemporaryDirectory(prefix="djit-smoke-") as folder:
             copied = Path(manifest["tracks"][0]["copied_path"])
             assert copied.read_bytes() == track_file.read_bytes()
             assert Path(result["playlist_path"]).read_text().startswith("#EXTM3U\n")
-            print("Packaged smoke passed: health, import, triage, audio, playlist, extraction")
+            print("Packaged smoke passed: health, event stream, import, triage, audio, playlist, extraction")
         except BaseException:
             log.seek(0)
             print(log.read(), file=sys.stderr)
