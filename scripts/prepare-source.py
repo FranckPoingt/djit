@@ -11,6 +11,7 @@ EXCLUDED = (
     "apps/server/djit/static/",
     "apps/server/djit/services/analyzer_deno_prototype/",
     "release/",
+    ".vscode/",
 )
 
 

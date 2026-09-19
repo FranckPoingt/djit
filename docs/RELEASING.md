@@ -12,8 +12,8 @@ in a later commit does not remove earlier copies.
    personal audio-analysis experiment. It refuses to overwrite an existing tree.
 3. Inspect that tree, including untracked files. Run a redacted secret scan, e.g.
    `gitleaks dir release/djit-source --redact`. Review any finding; do not add
-   broad allowlists. The current harmonization fixture has a known false positive:
-   a musical `keys` argument, not an API credential.
+   broad allowlists. Historical scans may flag musical `keys` arguments in harmonization tests;
+   inspect the specific match before deciding whether it is a credential.
 4. Initialize a new Git repository in the prepared tree and make its initial
    commit. Build and test from a fresh clone of that repository.
 5. Publish this clean repository to a **new** remote, or arrange a separately

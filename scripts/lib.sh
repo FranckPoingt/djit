@@ -32,5 +32,5 @@ bootstrap_repo() {
   "$MISE_BIN" install >/dev/null
 
   mise_exec pnpm install --frozen-lockfile
-  (cd "$REPO_ROOT/apps/server" && mise_exec uv sync --locked)
+  (cd "$REPO_ROOT/apps/server" && mise_exec uv sync --locked --python "$(mise_exec python -c 'import sys; print(sys.executable)')")
 }
