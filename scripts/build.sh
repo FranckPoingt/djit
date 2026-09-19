@@ -40,8 +40,10 @@ plutil -replace NSRemovableVolumesUsageDescription \
   -string "DJ-IT needs access to the external drives you choose for your music library." \
   dist/DJ-IT.app/Contents/Info.plist
 cp LICENSE THIRD_PARTY_NOTICES.md dist/DJ-IT.app/Contents/Resources/
-# Deno 2.9 writes this deterministic startup acknowledgement on launch.
-# Seal it now so first launch does not add an unsealed bundle resource.
-printf 'ok' > dist/DJ-IT.app/Contents/MacOS/DJ-IT.dylib.update-ok
+# Deno 2.9 writes a fixed startup marker beside its runtime. Keep both in
+# Resources: macOS treats ordinary files in MacOS as unsigned nested code.
+mv dist/DJ-IT.app/Contents/MacOS/DJ-IT.dylib dist/DJ-IT.app/Contents/Resources/
+sed -i '' 's|$DIR/DJ-IT.dylib|$DIR/../Resources/DJ-IT.dylib|' dist/DJ-IT.app/Contents/MacOS/DJ-IT
+printf 'ok' > dist/DJ-IT.app/Contents/Resources/DJ-IT.dylib.update-ok
 codesign --force --sign - dist/DJ-IT.app
 codesign --verify --deep --strict --verbose=2 dist/DJ-IT.app

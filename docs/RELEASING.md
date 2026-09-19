@@ -37,6 +37,7 @@ On Apple Silicon macOS:
 ./scripts/mise-exec.sh pnpm run test
 ./scripts/build.sh
 codesign --verify --deep --strict --verbose=2 dist/DJ-IT.app
+./scripts/mise-exec.sh python scripts/smoke-packaged.py
 ```
 
 Quit the installed DJ-IT and move its old bundle aside. Copy `dist/DJ-IT.app` to

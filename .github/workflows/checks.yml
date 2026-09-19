@@ -18,3 +18,4 @@ jobs:
       - run: git diff --exit-code -- apps/server/openapi.json packages/api-client/src/generated.ts
       - run: ./scripts/build.sh
       - run: codesign --verify --deep --strict --verbose=2 dist/DJ-IT.app
+      - run: ./scripts/mise-exec.sh python scripts/smoke-packaged.py
