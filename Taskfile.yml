@@ -1,0 +1,32 @@
+version: "3"
+
+tasks:
+  setup:
+    cmds:
+      - ./scripts/bootstrap.sh
+
+  install:
+    cmds:
+      - ./scripts/bootstrap.sh
+
+  dev:
+    cmds:
+      - ./scripts/dev.sh
+
+  build:
+    cmds:
+      - ./scripts/build.sh
+
+  codegen:
+    cmds:
+      - ./scripts/mise-exec.sh pnpm --filter api-client codegen
+
+  lint:
+    cmds:
+      - ./scripts/mise-exec.sh pnpm --filter web lint
+      - cd apps/server && ../../scripts/mise-exec.sh uv run ruff check .
+
+  test:
+    cmds:
+      - ./scripts/mise-exec.sh pnpm --filter web test
+      - cd apps/server && ../../scripts/mise-exec.sh uv run pytest

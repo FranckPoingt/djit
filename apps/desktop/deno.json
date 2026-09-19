@@ -1,0 +1,13 @@
+{
+  "desktop": {
+    "app": {
+      "name": "DJ-IT",
+      "identifier": "nz.co.franck.djit",
+      "icons": {
+        "macos": "apps/desktop/assets/icon.png",
+        "linux": "apps/desktop/assets/icon.png"
+      }
+    },
+    "backend": "webview"
+  }
+}

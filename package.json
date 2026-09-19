@@ -1,0 +1,19 @@
+{
+  "name": "djit",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "setup": "./scripts/bootstrap.sh",
+    "dev": "./scripts/dev.sh",
+    "build": "./scripts/build.sh",
+    "lint": "./scripts/mise-exec.sh pnpm --filter web lint && cd apps/server && ../../scripts/mise-exec.sh uv run ruff check .",
+    "test": "./scripts/mise-exec.sh pnpm --filter web test && cd apps/server && ../../scripts/mise-exec.sh uv run pytest",
+    "codegen": "./scripts/mise-exec.sh pnpm --filter api-client codegen"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "license": "AGPL-3.0-only"
+}

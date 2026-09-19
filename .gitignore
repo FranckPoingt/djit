@@ -1,0 +1,27 @@
+node_modules/
+.pnpm-store/
+.venv/
+dist/
+build/
+coverage/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+apps/server/djit.db.backup-20260403-190121
+
+# Private local configuration and generated web bundle
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.db-*
+*.sqlite3-*
+apps/server/djit/static/
+release/
