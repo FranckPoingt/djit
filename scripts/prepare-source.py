@@ -12,6 +12,7 @@ EXCLUDED = (
     "apps/server/djit/services/analyzer_deno_prototype/",
     "release/",
     ".vscode/",
+    "apps/server/media-cache/",
 )
 
 
@@ -48,4 +49,5 @@ if __name__ == "__main__":
     assert not public_path("apps/server/djit.db-wal")
     assert not public_path("apps/server/.env.local")
     assert not public_path("apps/server/djit/static/index.html")
+    assert not public_path("apps/server/media-cache/artwork.jpg")
     main()

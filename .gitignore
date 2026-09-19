@@ -25,3 +25,6 @@ apps/server/djit.db.backup-20260403-190121
 *.sqlite3-*
 apps/server/djit/static/
 release/
+
+# Generated artwork and waveform data from private music libraries
+media-cache/
