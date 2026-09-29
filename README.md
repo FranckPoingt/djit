@@ -9,6 +9,27 @@ Windows, Linux, and Intel Mac packages have not been validated. Engine DJ databa
 export is not implemented; folder extraction produces audio copies, an M3U8
 playlist, and a JSON manifest.
 
+## Install with your AI agent
+
+You need an **Apple Silicon Mac (M1 or newer) running macOS 15 or newer**, an
+internet connection for setup, and an AI coding agent that can run commands on
+your Mac. No coding experience, GitHub account, or paid Apple developer account
+is needed for a local build.
+
+Give your agent this prompt:
+
+> Install DJ-IT from https://github.com/FranckPoingt/djit on my Mac. I'm not
+> technical: handle the setup and only ask me to help with macOS prompts or
+> permissions you cannot complete. Read AGENTS.md and follow docs/INSTALL_MAC.md.
+> Check my Mac is supported, install missing prerequisites, build and install
+> the standalone app, verify it, and leave it open. Preserve any existing DJ-IT
+> data and music. Tell me how to open it next time and import my first folder.
+
+Your agent should follow the [Mac installation guide](docs/INSTALL_MAC.md).
+After setup, open **DJ-IT from Applications**; no Terminal or development servers
+are needed for everyday use. This path builds from source; the source-only alpha
+release does not include a downloadable app.
+
 ## What works
 
 - Incremental folder imports and embedded metadata reading.
